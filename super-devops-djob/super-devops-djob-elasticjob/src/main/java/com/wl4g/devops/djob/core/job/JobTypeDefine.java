@@ -15,16 +15,17 @@
  */
 package com.wl4g.devops.djob.core.job;
 
-import static java.util.Arrays.asList;
+import com.wl4g.devops.djob.core.api.dataflow.DataflowJob;
+import com.wl4g.devops.djob.core.api.script.ScriptJob;
+import com.wl4g.devops.djob.core.api.simple.SimpleJob;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import com.dangdang.ddframe.job.api.dataflow.DataflowJob;
-import com.dangdang.ddframe.job.api.script.ScriptJob;
-import com.dangdang.ddframe.job.api.simple.SimpleJob;
+import static java.util.Arrays.asList;
+
 
 public enum JobTypeDefine {
 

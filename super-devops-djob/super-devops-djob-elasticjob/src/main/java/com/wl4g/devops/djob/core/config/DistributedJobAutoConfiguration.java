@@ -15,14 +15,13 @@
  */
 package com.wl4g.devops.djob.core.config;
 
+import com.wl4g.devops.djob.core.configure.DefaultElasticJobConfigurer;
+import com.wl4g.devops.djob.core.reg.zookeeper.ZookeeperConfiguration;
+import com.wl4g.devops.djob.core.reg.zookeeper.ZookeeperRegistryCenter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperConfiguration;
-import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.wl4g.devops.djob.core.configure.DefaultElasticJobConfigurer;
 
 /**
  * 任务自动配置

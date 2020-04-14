@@ -83,24 +83,7 @@
 			<groupId>com.wl4g</groupId>
 			<artifactId>super-devops-dao</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.dangdang</groupId>
-			<artifactId>elastic-job-lite-core</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>guava</artifactId>
-					<groupId>com.google.guava</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>log4j</artifactId>
-					<groupId>log4j</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.projectlombok</groupId>
-					<artifactId>lombok</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+	
 
 		<!--elasticjob-core-->
 		<dependency>

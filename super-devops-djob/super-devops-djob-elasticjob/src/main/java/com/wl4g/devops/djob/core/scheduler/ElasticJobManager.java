@@ -15,20 +15,20 @@
  */
 package com.wl4g.devops.djob.core.scheduler;
 
-import com.dangdang.ddframe.job.config.JobCoreConfiguration;
-import com.dangdang.ddframe.job.config.JobTypeConfiguration;
-import com.dangdang.ddframe.job.config.dataflow.DataflowJobConfiguration;
-import com.dangdang.ddframe.job.config.script.ScriptJobConfiguration;
-import com.dangdang.ddframe.job.config.simple.SimpleJobConfiguration;
-import com.dangdang.ddframe.job.event.rdb.JobEventRdbConfiguration;
-import com.dangdang.ddframe.job.executor.handler.JobProperties.JobPropertiesEnum;
-import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
-import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
-import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.wl4g.devops.djob.core.configure.DefaultElasticJobConfigurer;
-import com.wl4g.devops.djob.core.job.ElasticJob;
-import com.wl4g.devops.tool.common.serialize.JacksonUtils;
 
+import com.wl4g.devops.djob.core.config.JobCoreConfiguration;
+import com.wl4g.devops.djob.core.config.JobTypeConfiguration;
+import com.wl4g.devops.djob.core.config.LiteJobConfiguration;
+import com.wl4g.devops.djob.core.config.dataflow.DataflowJobConfiguration;
+import com.wl4g.devops.djob.core.config.script.ScriptJobConfiguration;
+import com.wl4g.devops.djob.core.config.simple.SimpleJobConfiguration;
+import com.wl4g.devops.djob.core.configure.DefaultElasticJobConfigurer;
+import com.wl4g.devops.djob.core.event.rdb.JobEventRdbConfiguration;
+import com.wl4g.devops.djob.core.executor.handler.JobProperties;
+import com.wl4g.devops.djob.core.job.ElasticJob;
+import com.wl4g.devops.djob.core.reg.zookeeper.ZookeeperRegistryCenter;
+import com.wl4g.devops.djob.core.spring.api.SpringJobScheduler;
+import com.wl4g.devops.tool.common.serialize.JacksonUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.ChildData;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
@@ -64,8 +64,8 @@ public class ElasticJobManager {
 				.newBuilder(job.getJobName(), job.getCron(), job.getShardingTotalCount())
 				.shardingItemParameters(job.getShardingItemParameters()).description(job.getDescription())
 				.failover(job.isFailover()).jobParameter(job.getJobParameter()).misfire(job.isMisfire())
-				.jobProperties(JobPropertiesEnum.JOB_EXCEPTION_HANDLER.getKey(), job.getJobProperties().getJobExceptionHandler())
-				.jobProperties(JobPropertiesEnum.EXECUTOR_SERVICE_HANDLER.getKey(),
+				.jobProperties(JobProperties.JobPropertiesEnum.JOB_EXCEPTION_HANDLER.getKey(), job.getJobProperties().getJobExceptionHandler())
+				.jobProperties(JobProperties.JobPropertiesEnum.EXECUTOR_SERVICE_HANDLER.getKey(),
 						job.getJobProperties().getExecutorServiceHandler())
 				.build();
 

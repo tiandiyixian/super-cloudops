@@ -15,30 +15,30 @@
  */
 package com.wl4g.devops.djob.core.configure;
 
-import java.util.List;
+import com.wl4g.devops.djob.core.annotation.ElasticJobConf;
+import com.wl4g.devops.djob.core.config.JobCoreConfiguration;
+import com.wl4g.devops.djob.core.config.JobTypeConfiguration;
+import com.wl4g.devops.djob.core.config.LiteJobConfiguration;
+import com.wl4g.devops.djob.core.config.dataflow.DataflowJobConfiguration;
+import com.wl4g.devops.djob.core.config.script.ScriptJobConfiguration;
+import com.wl4g.devops.djob.core.config.simple.SimpleJobConfiguration;
+import com.wl4g.devops.djob.core.event.rdb.JobEventRdbConfiguration;
+import com.wl4g.devops.djob.core.executor.handler.JobProperties;
+import com.wl4g.devops.djob.core.job.JobAttributeDefine;
+import com.wl4g.devops.djob.core.job.JobTypeDefine;
+import com.wl4g.devops.djob.core.reg.zookeeper.ZookeeperRegistryCenter;
+import com.wl4g.devops.djob.core.scheduler.ElasticJobManager;
+import com.wl4g.devops.djob.core.spring.api.SpringJobScheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.ManagedList;
 
-import com.dangdang.ddframe.job.config.JobCoreConfiguration;
-import com.dangdang.ddframe.job.config.JobTypeConfiguration;
-import com.dangdang.ddframe.job.config.dataflow.DataflowJobConfiguration;
-import com.dangdang.ddframe.job.config.script.ScriptJobConfiguration;
-import com.dangdang.ddframe.job.config.simple.SimpleJobConfiguration;
-import com.dangdang.ddframe.job.event.rdb.JobEventRdbConfiguration;
-import com.dangdang.ddframe.job.executor.handler.JobProperties.JobPropertiesEnum;
-import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
-import com.dangdang.ddframe.job.lite.spring.api.SpringJobScheduler;
-import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
-import com.wl4g.devops.djob.core.scheduler.ElasticJobManager;
-import com.wl4g.devops.djob.core.annotation.ElasticJobConf;
-import com.wl4g.devops.djob.core.job.JobAttributeDefine;
-import com.wl4g.devops.djob.core.job.JobTypeDefine;
+import java.util.List;
 
-import static org.springframework.core.annotation.AnnotationUtils.*;
 import static com.wl4g.devops.djob.core.job.JobAttributeDefine.*;
 import static org.apache.commons.lang3.StringUtils.isBlank;
+import static org.springframework.core.annotation.AnnotationUtils.findAnnotation;
 
 /**
  * Parsing task information initialization from annotations.
@@ -103,8 +103,8 @@ public class DefaultElasticJobConfigurer extends AbstractDjobConfigurer {
 			JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder(jobName, cron, shardingTotalCount)
 					.shardingItemParameters(shardingItemParameters).description(description).failover(failover)
 					.jobParameter(jobParameter).misfire(misfire)
-					.jobProperties(JobPropertiesEnum.JOB_EXCEPTION_HANDLER.getKey(), jobExceptionHandler)
-					.jobProperties(JobPropertiesEnum.EXECUTOR_SERVICE_HANDLER.getKey(), executorServiceHandler).build();
+					.jobProperties(JobProperties.JobPropertiesEnum.JOB_EXCEPTION_HANDLER.getKey(), jobExceptionHandler)
+					.jobProperties(JobProperties.JobPropertiesEnum.EXECUTOR_SERVICE_HANDLER.getKey(), executorServiceHandler).build();
 
 			// 不同类型的任务配置处理
 			LiteJobConfiguration jobConfig = null;
