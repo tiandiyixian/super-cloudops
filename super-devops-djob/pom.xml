@@ -11,6 +11,7 @@
 	<modules>
 		<module>super-devops-djob-manager</module>
 		<module>super-devops-djob-core</module>
+		<module>super-devops-djob-elasticjob</module>
 		<module>super-devops-djob-example</module>
 	</modules>
 	<properties>

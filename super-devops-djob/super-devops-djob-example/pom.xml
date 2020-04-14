@@ -32,6 +32,11 @@
 			<groupId>com.wl4g</groupId>
 			<artifactId>super-devops-djob-core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.wl4g</groupId>
+			<artifactId>super-devops-djob-elasticjob</artifactId>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>${final.name}</finalName>

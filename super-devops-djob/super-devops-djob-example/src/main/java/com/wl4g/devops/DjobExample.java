@@ -15,10 +15,10 @@
  */
 package com.wl4g.devops;
 
+import com.wl4g.devops.djob.core.annotation.EnableDjobScheduling;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.wl4g.devops.djob.core.annotation.EnableDjobScheduling;
 
 @EnableDjobScheduling
 @SpringBootApplication

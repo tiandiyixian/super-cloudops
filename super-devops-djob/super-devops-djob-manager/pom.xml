@@ -35,6 +35,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.wl4g</groupId>
+			<artifactId>super-devops-djob-elasticjob</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.wl4g</groupId>
 			<artifactId>super-devops-iam-client</artifactId>
 		</dependency>
 		<dependency>
